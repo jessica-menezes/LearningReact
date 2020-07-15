@@ -22,25 +22,32 @@ const template = (
 
 let count = 0;
 const addOne= () =>{
-    console.log('addOne');
+    count++;
+    RenderCounterApp();
 };
 const minusOne= () =>{
-    console.log('minusOne');
+    count--;
+    RenderCounterApp();
 };
 const reset= () =>{
-    console.log('reset');
+    count=0;
+    RenderCounterApp();
 };
-const templateTwo = ( //className used not class
-    <div>
-        <h1>Count: {count}</h1>
-        <button onClick={addOne}>+1</button>
-        <button onClick={minusOne}>-1</button>
-        <button onClick={reset}>reset</button>
-    </div>
 
-);
 
 const appRoot = document.getElementById('app');
 
-ReactDOM.render(templateTwo,appRoot);
+const RenderCounterApp = () => {
+    const templateTwo = ( //className used not class
+        <div>
+            <h1>Count: {count}</h1>
+            <button onClick={addOne}>+1</button>
+            <button onClick={minusOne}>-1</button>
+            <button onClick={reset}>reset</button>
+        </div>
+    );
+    ReactDOM.render(templateTwo,appRoot);
+};
+
+RenderCounterApp();
  
