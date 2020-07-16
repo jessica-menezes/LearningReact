@@ -1,93 +1,42 @@
 'use strict';
 
-console.log('App.js is running');
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-//JSX - Javascript XML
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var app = {
-    title: 'Indecision App',
-    subtitle: 'This is some text',
-    options: ['One', 'Two']
-};
+var Person = function () {
+    //sets a default for name in event no name is entered like for 'other' below
+    function Person() {
+        var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'Anon';
+        var age = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
 
-var template = React.createElement(
-    'div',
-    null,
-    React.createElement(
-        'h1',
-        null,
-        app.title
-    ),
-    app.subtitle && React.createElement(
-        'p',
-        null,
-        app.subtitle
-    ),
-    React.createElement(
-        'p',
-        null,
-        app.options.length > 0 ? 'Here are your options' : 'No options'
-    ),
-    React.createElement(
-        'ol',
-        null,
-        React.createElement(
-            'li',
-            null,
-            'Raul Smells'
-        ),
-        React.createElement(
-            'li',
-            null,
-            'Raul Smells a lot'
-        )
-    )
-);
+        _classCallCheck(this, Person);
 
-var count = 0;
-var addOne = function addOne() {
-    count++;
-    RenderCounterApp();
-};
-var minusOne = function minusOne() {
-    count--;
-    RenderCounterApp();
-};
-var reset = function reset() {
-    count = 0;
-    RenderCounterApp();
-};
+        this.name = name;
+        this.age = age;
+    }
 
-var appRoot = document.getElementById('app');
+    _createClass(Person, [{
+        key: 'getGreeting',
+        value: function getGreeting() {
+            //return 'Hi I am ' + this.name + '!';
 
-var RenderCounterApp = function RenderCounterApp() {
-    var templateTwo = //className used not class
-    React.createElement(
-        'div',
-        null,
-        React.createElement(
-            'h1',
-            null,
-            'Count: ',
-            count
-        ),
-        React.createElement(
-            'button',
-            { onClick: addOne },
-            '+1'
-        ),
-        React.createElement(
-            'button',
-            { onClick: minusOne },
-            '-1'
-        ),
-        React.createElement(
-            'button',
-            { onClick: reset },
-            'reset'
-        )
-    );
-    ReactDOM.render(templateTwo, appRoot);
-};
+            //New ES6 feature
+            return 'Hi I am ' + this.name;
+        }
+    }, {
+        key: 'getDescription',
+        value: function getDescription() {
+            return this.name + ' is ' + this.age + ' year(s) old';
+        }
+    }]);
 
-RenderCounterApp();
+    return Person;
+}();
+
+var me = new Person('Jessica', 22);
+//can access the methods in the individual instances of our class
+console.log(me.getDescription());
+
+var other = new Person();
+console.log(other.getDescription());

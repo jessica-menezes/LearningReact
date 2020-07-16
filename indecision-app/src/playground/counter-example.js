@@ -13,7 +13,7 @@ const reset= () =>{
 };
 
 
-ReactDOM.render(template, appRoot);
+const appRoot = document.getElementById('app');
 
 const RenderCounterApp = () => {
     const templateTwo = ( //className used not class
